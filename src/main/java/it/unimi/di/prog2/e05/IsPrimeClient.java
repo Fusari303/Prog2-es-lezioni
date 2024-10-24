@@ -19,12 +19,9 @@ along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
 */
 
-package it.unimi.di.prog2.e05;
-
-/** Esercizio 3.3 di PDJ. */
 public class IsPrimeClient {
 
-  /** . */
+  /** Costruttore di default che rende la classe non istanziabile */
   private IsPrimeClient() {}
 
   // Aggiunga qui un main che invochi il metodo isPrime (che può sviluppare in
@@ -33,4 +30,23 @@ public class IsPrimeClient {
   // Il main riceve un intero come parametro sulla linea di comando ed emette
   // "true" nel flusso d'uscita se e solo se esso è primo.
 
+  /**
+   * Metodo principale che riceve come argomento un numero intero. Controlla se il numero è primo,
+   * cioè se è divisibile solo per 1 e per se stesso. In tal caso stampa true, altrimenti, se non
+   * primo, non stampa nulla.
+   *
+   * @param args numero intero da utilizzare nel metodo.
+   */
+  public static void main(String[] args) {
+    int n = Integer.parseInt(args[0]);
+    boolean primo = true;
+    for (int i = 2; i < n; i++) {
+      if (n % i == 0) {
+        primo = false;
+      }
+    }
+    if (primo) {
+      System.out.println(primo);
+    }
+  }
 }

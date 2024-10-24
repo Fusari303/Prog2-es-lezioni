@@ -19,12 +19,12 @@ along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
 */
 
-package it.unimi.di.prog2.e05;
+import java.util.Scanner;
 
 /** Esercizio 3.1 di PDJ. */
 public class GcdClient {
 
-  /** . */
+  /** Costruttore di default che rende la classe non istanziabile */
   private GcdClient() {}
 
   // Aggiunga qui un main che invochi il metodo gcd (che può sviluppare in
@@ -33,4 +33,35 @@ public class GcdClient {
   // Il main legge dal flusso di ingresso coppie di numeri ed emette nel flusso
   // d'uscita il loro gcd.
 
+  /**
+   * Metodo principale che dato un flusso di numeri interi in ingresso stampa il massimo comune
+   * divisore tra di loro
+   *
+   * @param args non utilizzato
+   */
+  public static void main(String[] args) {
+    try (Scanner s = new Scanner(System.in)) {
+      while (s.hasNext()) {
+        String linea = s.nextLine();
+        String[] valori = linea.split(" ");
+        for (int i = 0; i < valori.length; i += 2) {
+          int n0 = Integer.parseInt(valori[i]);
+          int n1 = Integer.parseInt(valori[i + 1]);
+          int min = 0;
+          int gcd = 0;
+          if (n0 < n1) {
+            min = n0;
+          } else {
+            min = n1;
+          }
+          for (int j = 1; j <= min; j++) {
+            if (n0 % j == 0 && n1 % j == 0) {
+              gcd = j;
+            }
+          }
+          System.out.println(gcd);
+        }
+      }
+    }
+  }
 }

@@ -19,7 +19,8 @@ along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
 */
 
-package it.unimi.di.prog2.e03;
+import java.util.HashMap;
+import java.util.Scanner;
 
 /**
  * Vedi <a
@@ -27,18 +28,28 @@ package it.unimi.di.prog2.e03;
  */
 public class LetteraPiùFrequente {
 
-  /** . */
-  private LetteraPiùFrequente() {}
-
-  /*- Completa il seguente main
-
   public static void main(String[] args) {
     try (Scanner s = new Scanner(System.in)) {
+      HashMap<Character, Integer> lettere = new HashMap<Character, Integer>();
       while (s.hasNext()) {
         final String parola = s.nextLine();
+        for (int i = 0; i < parola.length(); i++) {
+          int count = 0;
+          if (lettere.containsKey(parola.charAt(i))) {
+            count = lettere.get(parola.charAt(i));
+          }
+          lettere.put(parola.charAt(i), count + 1);
+        }
       }
+      lettere.remove(' ');
+
+      int max = 0;
+      for (var entry : lettere.entrySet()) {
+        if (entry.getValue() > max) {
+          max = entry.getValue();
+        }
+      }
+      System.out.println(max);
     }
   }
-
-  */
 }

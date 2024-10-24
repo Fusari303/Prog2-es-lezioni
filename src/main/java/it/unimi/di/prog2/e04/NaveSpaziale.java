@@ -19,16 +19,42 @@ along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
 */
 
-package it.unimi.di.prog2.e04;
-
-/**
- * Vedi <a
- * href="https://github.com/mapio/labprog/blob/master/esercizi/nave_spaziale/Testo.md">testo</a>.
- */
 public class NaveSpaziale {
 
   /** . */
   private NaveSpaziale() {}
+
+  /**
+   * Funzione principale di Java, viene lanciata in automatico dalla JVM
+   *
+   * @param args array di stringhe in input passate da linea di comando
+   */
+  public static void main(String[] args) {
+    int from = Integer.parseInt(args[0]);
+    int to = Integer.parseInt(args[1]);
+    int tmp = to;
+    String sequenza = "";
+
+    while (tmp != from) {
+      if (tmp < from * 4) {
+        tmp--;
+        sequenza += "P";
+      } else {
+        while (tmp % 4 != 0) {
+          tmp--;
+          sequenza += "P";
+        }
+        tmp /= 4;
+        sequenza += "S";
+      }
+    }
+
+    String seqInversa = "";
+    for (int i = sequenza.length() - 1; i >= 0; i--) {
+      seqInversa += sequenza.charAt(i);
+    }
+    System.out.println(seqInversa);
+  }
 
   // Se String[] args è il vettore che contiene gli argomenti sulla linea
   // di comando, potete convertire i primi due in numeri interi con le
