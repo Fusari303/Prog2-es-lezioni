@@ -19,7 +19,7 @@ along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
 */
 
-package it.unimi.di.prog2.e03;
+import java.util.Scanner;
 
 /**
  * Vedi <a
@@ -27,18 +27,41 @@ package it.unimi.di.prog2.e03;
  */
 public class BoundingBox {
 
-  /** . */
-  private BoundingBox() {}
-
-  /*- Completa il seguente main
-
   public static void main(String[] args) {
     try (Scanner s = new Scanner(System.in)) {
+      int inizio = 0;
+      int fine = 0;
+      int j = 1;
+      boolean iniziato = false;
+      int min = 0;
+      int max = 0;
+      int lung = 0;
+
       while (s.hasNext()) {
         final String linea = s.nextLine();
+
+        if (linea.contains("*") && iniziato == false) {
+          inizio = j - 1;
+          iniziato = true;
+        }
+        if (linea.contains("*")) {
+          fine = j;
+        }
+
+        for (int i = 0; i < linea.length(); i++) {
+          if (linea.charAt(i) == '*' && i > max) {
+            max = i;
+          }
+          if (j == 1) {
+            lung = linea.length();
+          } else if (linea.charAt(i) == '*' && i < lung) {
+            min = i;
+            lung = min;
+          }
+        }
+        j++;
       }
+      System.out.println(fine - inizio + " " + (max - min + 1));
     }
   }
-
-  */
 }
